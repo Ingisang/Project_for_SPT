@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/A"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="A_홈 화면" />
+        <item
+            android:id="@+id/B"
+            android:title="B_" />
+        <item
+            android:id="@+id/C"
+            android:title="C_" />
+        <item
+            android:id="@+id/D"
+            android:title="환경설정" />
+    </group>
+</menu>

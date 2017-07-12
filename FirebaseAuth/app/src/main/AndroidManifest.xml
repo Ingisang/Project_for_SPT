@@ -29,6 +29,10 @@
             android:label="@string/title_activity_profile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".SettingActivity"
+            android:label="환경설정"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".SignupActivity"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar" />
