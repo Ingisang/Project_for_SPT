@@ -105,12 +105,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (id == R.id.A) {
             // Handle the camera action
-        } else if (id == R.id.B) {
-
-
-        } else if (id == R.id.C) {
-
-
         } else if (id == R.id.D) {
             Intent intent = new Intent(MainActivity.this, SettingActivity.class);
              startActivity(intent);
