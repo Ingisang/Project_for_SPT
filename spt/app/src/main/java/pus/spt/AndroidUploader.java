@@ -12,12 +12,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-/**
- * Created by Belal on 11/22/2015.
- */
 public class AndroidUploader {
 
-    public static final String UPLOAD_URL= "http://192.168.35.203:82/receive.php";
+    public static final String UPLOAD_URL= "http://192.168.0.134:81/receive.php";
 
     private int serverResponseCode;
 

@@ -15,11 +15,21 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.MediaController;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import java.io.File;
 import java.io.IOException;
 public class VideoRecorderMain extends Activity implements SurfaceHolder.Callback {
+
+    //비디오뷰
+    private VideoView videoView;
+    private LinearLayout videoLayout;
+    private MediaController mediaController;
+    private static final String VIDEO_PATH = "http://172.30.88.35:81/1.mp4";
+    ////////////////////////////////
     MediaRecorder mediaRecorder=null;
 
     SurfaceView surfaceView;
@@ -41,7 +51,18 @@ public class VideoRecorderMain extends Activity implements SurfaceHolder.Callbac
         path += "/love.mp4";
         versioncheack();
         setting();
+///////////////////////////비디오뷰
+        String devicepath = Environment.getExternalStorageDirectory().getAbsolutePath(); // 기본적인 절대경로 얻어오기
+        videoLayout=(LinearLayout)findViewById(R.id.video_layout);
+        videoView = (VideoView)findViewById(R.id.video_view);
+        videoView.setVideoPath(devicepath+"/DCIM/Camera/20170906_174947.mp4");
+        videoLayout.setAlpha((float)0.5);
+        videoView.start();
+        //mediaController = new MediaController(VideoRecorderMain.this);
+        //mediaController.setAnchorView(videoView);
+        //videoView.setMediaController(mediaController);
 
+/////////////////////////////
         startbtn = (Button)findViewById(R.id.start_btn);
         endbtn = (Button) findViewById(R.id.end_btn);
 
@@ -65,6 +86,8 @@ public class VideoRecorderMain extends Activity implements SurfaceHolder.Callbac
                             mediaRecorder.setPreviewDisplay(surfaceHolder.getSurface());
                             mediaRecorder.prepare();
 
+                            videoView.start();
+
                             Toast.makeText(VideoRecorderMain.this, "녹화를 시작합니다", Toast.LENGTH_SHORT).show();
                             mediaRecorder.start();
                         } catch (final Exception ex) {
@@ -86,6 +109,9 @@ public class VideoRecorderMain extends Activity implements SurfaceHolder.Callbac
                 mediaRecorder.release();
                 cam.lock();
                 mediaRecorder = null;
+
+                videoView.pause();
+
                 Intent intent = new Intent(VideoRecorderMain.this,UploadActivity.class);
                 startActivity(intent);
                 finish();
